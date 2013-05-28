@@ -4,6 +4,7 @@ return array(
     'modules' => array(
       'ZendDeveloperTools',
       'Application',
+      'Forum',
       'DoctrineModule', 
       'DoctrineORMModule'
     ),
