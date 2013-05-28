@@ -1,1 +1,29 @@
-hello world
+<?php
+$title = 'Topics Overview';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+  <a href="<?php echo $this->url('topic', array('action'=>'add'));?>">Add new Topic</a>
+</p>
+<?php foreach ($topics as $topic) : ?>
+<article>
+  <h1><?=$this->escapeHtml($topic->getTitle());?></h1>
+  <p>
+    <?php echo $this->escapeHtml($topic->getContent());?>
+  </p>
+  <aside>
+    <ul>
+      <li><a href="<?php echo $this->url('topic', array(
+        'action'=>'edit',
+        'id'=>$topic->getId()
+      ));
+      ?>">Edit this Topic</a></li>
+      <li><a href="<?php echo $this->url('topic', array(
+        'action'=>'delete',
+        'id'=>$topic->getId()
+      ));?>">Delete this Topic</a></li>
+    </ul>
+  </aside>
+</article>
+<?php endforeach; ?>

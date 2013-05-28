@@ -1,0 +1,17 @@
+<h1>Add a new topic</h1>
+<?php
+$form->setAttribute('action', $this->url('topic', array('action'=>'add')))
+     ->prepare();
+ 
+echo $this->form()->openTag($form);
+ 
+$postFieldset = $form->get('topic');
+ 
+echo $this->formHidden($form->get('security'));
+echo $this->formHidden($postFieldset->get('id'));
+echo $this->formRow($postFieldset->get('title'));
+echo $this->formRow($postFieldset->get('content'));
+ 
+echo $this->formInput($form->get('submit'));
+ 
+echo $this->form()->closeTag($form);

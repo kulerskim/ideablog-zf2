@@ -3,9 +3,11 @@
 namespace Forum\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Forum\Entity\User;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Topic
 {
@@ -36,6 +38,13 @@ class Topic
      * @ORM\JoinColumn(name="created_by", referencedColumnName="id")
      */
     private $created_by;
-
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersistSetCreated()
+    {
+        $this->created_at = new \DateTime('now', new \DateTimeZone('UTC'));        
+    }
 }
 
