@@ -14,7 +14,9 @@ $this->headTitle($title);
   <tbody>
     <?php foreach ($topics as $topic) : ?>
       <tr>
-        <td><?= $this->escapeHtml($topic->getTitle()); ?></td>
+        <td>
+          <a href="<?=$this->url('topic', array('action'=>'show', 'id' => $topic->getId()))?>"><?= $this->escapeHtml($topic->getTitle()); ?></a>
+        </td>
         <td>
           <a class='btn btn-mini' href="<?= $this->url('topic', array('action' => 'edit', 'id' => $topic->getId())); ?>">Edit this Topic</a>
           <a class='btn btn-mini' href="<?= $this->url('topic', array('action' => 'delete', 'id' => $topic->getId())); ?>">Delete this Topic</a></li>
@@ -23,4 +25,4 @@ $this->headTitle($title);
     <?php endforeach; ?>
   </tbody>  
 </table>
-<a class='btn btn-primary' href="<?=$this->url('topic', array('action' => 'add')); ?>">Add new Topic</a>
+<a class='btn btn-primary' href="<?= $this->url('topic', array('action' => 'add')); ?>">Add new Topic</a>
