@@ -1,5 +1,8 @@
 <h1>Add a new topic</h1>
 <?php
+
+$this->contentEditor();
+
 $form->setAttribute('action', $this->url('topic', array('action'=>'add')))
      ->prepare();
  

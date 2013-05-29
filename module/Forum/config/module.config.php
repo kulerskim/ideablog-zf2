@@ -32,17 +32,22 @@ return array(
     ),
   ),
   'doctrine' => array(
-      'driver' => array(
-        'AnnotationDriver' => array(
-            'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-            'cache' => 'array',
-            'paths' => array(__DIR__ . '/../src/Forum/Entity')
-        ),
-        'orm_default' => array(
-            'drivers' => array(
-                'Forum\Entity' => 'AnnotationDriver',
-            )
-        )
+    'driver' => array(
+      'AnnotationDriver' => array(
+        'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+        'cache' => 'array',
+        'paths' => array(__DIR__ . '/../src/Forum/Entity')
       ),
+      'orm_default' => array(
+        'drivers' => array(
+          'Forum\Entity' => 'AnnotationDriver',
+        )
+      )
     ),
+  ),
+  'view_helpers' => array(
+    'invokables' => array(
+      'contentEditor' => 'Forum\View\Helper\ContentEditor'
+    )
+  ),
 );
