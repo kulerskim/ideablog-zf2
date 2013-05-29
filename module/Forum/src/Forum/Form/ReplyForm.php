@@ -37,7 +37,7 @@ class ReplyForm extends Form {
     $this->setValidationGroup(array(
       'security',
       'reply' => array(
-        'title',
+        'topic',
         'content'
       )
     ));

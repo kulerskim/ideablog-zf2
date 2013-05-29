@@ -46,16 +46,6 @@ class ReplyFieldset extends Fieldset implements InputFilterProviderInterface
     ));
 
     $this->add(array(
-      'name' => 'title',
-      'options' => array(
-        'label' => 'Title'
-      ),
-      'attributes' => array(
-        'type' => 'text'
-      )
-    ));
-
-    $this->add(array(
       'name' => 'content',
       'options' => array(
         'label' => 'Content'
@@ -76,16 +66,6 @@ class ReplyFieldset extends Fieldset implements InputFilterProviderInterface
   public function getInputFilterSpecification()
   {
     return array(
-      'title' => array(
-        'required' => true,
-        'filters' => array(
-          array('name' => 'StringTrim'),
-          array('name' => 'StripTags')
-        ),
-        'properties' => array(
-          'required' => true
-        )
-      ),
       'content' => array(
         'required' => true,
         'filters' => array(

@@ -8,7 +8,6 @@ $this->headTitle($title);
 </p>
 <?php foreach ($replies as $reply) : ?>
 <article>
-  <h1><?=$this->escapeHtml($reply->getTitle());?></h1>
   <p>Created by <?php echo $reply->getCreatedBy()->getName(); ?> on <?php echo $reply->getCreatedAt(); ?></p>
   <p>
     <?php echo $this->escapeHtml($reply->getContent());?>
@@ -27,7 +26,6 @@ $postFieldset = $form->get('reply');
 echo $this->formHidden($form->get('security'));
 echo $this->formHidden($postFieldset->get('id'));
 echo $this->formHidden($postFieldset->get('topic'));
-echo $this->formRow($postFieldset->get('title'));
 echo $this->formRow($postFieldset->get('content'));
 
 echo $this->formInput($form->get('submit'));

@@ -61,13 +61,12 @@ class ReplyController extends AbstractActionController {
     if ($request->isPost()) {
       $form->setData($request->getPost());
       if ($form->isValid()) {
-//        $em->persist($reply);
-//        $em->flush();
-//
-        $this->redirect()->toRoute('topic', array('action' => 'show', 'id' => 7));
+        $em->persist($reply);
+        $em->flush();
+        $this->redirect()->toRoute('topic', array('action' => 'show', 'id' => $reply->getTopic()->getId()));
       }
-    }
-    $this->redirect()->toRoute('topic');
+    }else
+      $this->redirect()->toRoute('topic');
 
     return $this->getResponse();
   }
