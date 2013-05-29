@@ -9,6 +9,7 @@ build/
 composer.lock
 nbproject
 tmp/
+data/cache/
 
 #ignore database setup
 config/autoload/*.local.php

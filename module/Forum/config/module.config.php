@@ -19,11 +19,26 @@ return array(
           ),
         ),
       ),
+      'reply' => array(
+        'type' => 'segment',
+        'options' => array(
+          'route' => '/reply[/:action][/:id]',
+          'constraints' => array(
+            'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+            'id' => '[0-9]+',
+          ),
+          'defaults' => array(
+            'controller' => 'Forum\Controller\Reply',
+            'action' => 'index',
+          ),
+        ),
+      ),
     ),
   ),
   'controllers' => array(
     'invokables' => array(
-      'Forum\Controller\Topic' => 'Forum\Controller\TopicController'
+      'Forum\Controller\Topic' => 'Forum\Controller\TopicController',
+      'Forum\Controller\Reply' => 'Forum\Controller\ReplyController'
     ),
   ),
   'view_manager' => array(

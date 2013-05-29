@@ -3,7 +3,9 @@
 namespace Forum\Controller;
 
 use Forum\Entity\Topic;
+use Forum\Entity\Reply;
 use Forum\Form\TopicForm;
+use Forum\Form\ReplyForm;
 use Doctrine\ORM\EntityManager;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -119,6 +121,36 @@ class TopicController extends AbstractActionController {
     $em->flush();
 
     $this->redirect()->toRoute('topic');
+  }
+
+  public function showAction() {
+    $id = (int) $this->params('id', null);
+    if (null === $id) {
+      return $this->redirect()->toRoute('topic');
+    }
+
+    $em = $this->getEntityManager();
+    $topicRepository = $em->getRepository('Forum\Entity\Topic');
+    $topic = $topicRepository->find($id);
+    $replyRepository = $em->getRepository('Forum\Entity\Reply');
+    $replies = $replyRepository->findBy(array('topic' => $id));
+
+    $em = $this->getEntityManager();
+
+    $topic = $em->find('Forum\Entity\Topic', $id);
+    $user = $em->getRepository("Forum\Entity\User")->find(1);
+
+    $reply = new Reply();
+    $reply->setCreatedBy($user);
+    $reply->setTopic($topic);
+    $form = new ReplyForm($this->serviceLocator);
+    $form->bind($reply);
+
+    return array(
+      'form' => $form,
+      'topic' => $topic,
+      'replies' => $replies
+    );
   }
 
 }
