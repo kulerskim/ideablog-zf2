@@ -61,3 +61,19 @@ div.container a.brand {
 .navbar-inverse .brand:hover, .navbar-inverse .nav>li>a:hover {
     color: #111;
 }
+
+
+footer{
+    position: absolute;
+    right: 25px;
+    bottom: 50px;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: visible;
+    -webkit-transform: rotate(270deg);   
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
