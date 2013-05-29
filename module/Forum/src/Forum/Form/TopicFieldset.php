@@ -34,20 +34,23 @@ class TopicFieldset extends Fieldset implements InputFilterProviderInterface
     $this->add(array(
       'name' => 'title',
       'options' => array(
-        'label' => 'Title'
+        //'label' => 'Title'        
       ),
       'attributes' => array(
-        'type' => 'text'
+        'type' => 'text',
+        'class' => 'input-xxlarge',
+        'placeholder'=>"Title"
       )
     ));
  
     $this->add(array(
       'name' => 'content',
       'options' => array(
-        'label' => 'Content'
+        //'label' => 'Content'
       ),
       'attributes' => array(
-        'type' => 'textarea'
+        'type' => 'textarea',
+        'class' => 'edit-content'
       )
     ));
   }
@@ -75,7 +78,6 @@ class TopicFieldset extends Fieldset implements InputFilterProviderInterface
         'required' => true,
         'filters' => array(
           array('name' => 'StringTrim'),
-          array('name' => 'StripTags')
         ),
         'properties' => array(
           'required' => true

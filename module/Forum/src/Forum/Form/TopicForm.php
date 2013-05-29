@@ -29,8 +29,9 @@ class TopicForm extends Form {
       'name' => 'submit',
       'attributes' => array(
         'type' => 'submit',
-        'value' => 'Go',
-        'id' => 'submitbutton'
+        'value' => 'Save',
+        'id' => 'submitbutton',
+        'class'=>'btn btn-primary'
       )
     ));
 
