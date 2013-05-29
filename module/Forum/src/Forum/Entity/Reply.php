@@ -19,6 +19,7 @@ class Reply
 
     /**
      * @ORM\ManyToOne(targetEntity="Topic")
+     * @ORM\JoinColumn(name="topic_id", referencedColumnName="id", nullable=false)
      */
     protected $topic;
 
