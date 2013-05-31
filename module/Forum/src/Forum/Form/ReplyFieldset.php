@@ -48,10 +48,11 @@ class ReplyFieldset extends Fieldset implements InputFilterProviderInterface
     $this->add(array(
       'name' => 'content',
       'options' => array(
-        'label' => 'Content'
+        'label' => 'Reply'
       ),
       'attributes' => array(
-        'type' => 'textarea'
+        'type' => 'textarea',
+        'class' => 'edit-content'
       )
     ));
 
@@ -70,7 +71,6 @@ class ReplyFieldset extends Fieldset implements InputFilterProviderInterface
         'required' => true,
         'filters' => array(
           array('name' => 'StringTrim'),
-          array('name' => 'StripTags')
         ),
         'properties' => array(
           'required' => true
