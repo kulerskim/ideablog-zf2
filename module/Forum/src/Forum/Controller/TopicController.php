@@ -8,6 +8,7 @@ use Forum\Form\TopicForm;
 use Forum\Form\ReplyForm;
 use Doctrine\ORM\EntityManager;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Json\Json;
 
 class TopicController extends AbstractActionController {
 
@@ -131,13 +132,12 @@ class TopicController extends AbstractActionController {
 
     $em = $this->getEntityManager();
     $topicRepository = $em->getRepository('Forum\Entity\Topic');
-    $topic = $topicRepository->find($id);
-    $replyRepository = $em->getRepository('Forum\Entity\Reply');
-    $replies = $replyRepository->findBy(array('topic' => $id));
+    $topicService = $this->serviceLocator->get('Forum\Service\TopicService');
+
+    extract($topicService->getById($id));
 
     $em = $this->getEntityManager();
 
-    $topic = $em->find('Forum\Entity\Topic', $id);
     $user = $em->getRepository("Forum\Entity\User")->find(1);
 
     $reply = new Reply();
@@ -151,6 +151,19 @@ class TopicController extends AbstractActionController {
       'topic' => $topic,
       'replies' => $replies
     );
+  }
+
+  public function mobileshowAction() {
+    $id = (int) $this->params('id', null);
+    $topicService = $this->serviceLocator->get('Forum\Service\TopicService');
+    extract($topicService->getById($id));
+
+    $repliesA = array();
+    foreach($replies as $reply) {
+      $repliesA[] = array('id' => $reply->getId(), 'content' => $reply->getContent(), 'date' => $reply->getCreatedAt()->format('Y-m-d H:j:s'), 'author' => $reply->getCreatedBy()->getName());
+    }
+
+    return new \Zend\View\Model\JsonModel(array('id' => $id, 'title' => $topic->getTitle(), 'content' => $topic->getContent(), 'posts' => $repliesA));
   }
 
 }

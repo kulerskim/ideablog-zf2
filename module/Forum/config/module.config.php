@@ -45,6 +45,9 @@ return array(
     'template_path_stack' => array(
       'forum' => __DIR__ . '/../view',
     ),
+    'strategies' => array(
+      'ViewJSONStrategy'
+    ),
   ),
   'doctrine' => array(
     'driver' => array(
