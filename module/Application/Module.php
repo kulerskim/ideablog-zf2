@@ -29,4 +29,15 @@ class Module
             ),
         );
     }
+
+    public function onBootstrap($e) {
+      $translator = $e->getApplication()->getServiceManager()->get('translator');
+      $session    = $e->getApplication()->getServiceManager()->get('session');
+      if (isset($session->lang)) {
+        $translator->setLocale($session->lang);
+      }
+
+      $viewModel           = $e->getApplication()->getMvcEvent()->getViewModel();
+      $viewModel->lang     = $translator->getLocale();
+    }
 }

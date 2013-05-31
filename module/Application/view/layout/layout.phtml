@@ -39,6 +39,15 @@
             </ul>
           </div><!--/.nav-collapse -->
         </div>
+        <div class="dropdown" style="float:right">
+          <? echo $this->partial('layout/languages.phtml', array(
+            'lang' => array(
+              'English'  => 'en_US',
+              'Hebrew' => 'he_HE',
+            ),
+            'selected' => $this->lang
+          )); ?>
+        </div>
       </div>
     </div>
     <div class="container">
