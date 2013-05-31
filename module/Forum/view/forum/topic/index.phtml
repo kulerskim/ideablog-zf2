@@ -1,5 +1,5 @@
 <?php
-$title = 'Topics Overview';
+$title = $this->translate('Topics Overview');
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -18,11 +18,11 @@ $this->headTitle($title);
           <a href="<?=$this->url('topic', array('action'=>'show', 'id' => $topic->getId()))?>"><?= $this->escapeHtml($topic->getTitle()); ?></a>
         </td>
         <td>
-          <a class='btn btn-mini' href="<?= $this->url('topic', array('action' => 'edit', 'id' => $topic->getId())); ?>">Edit this Topic</a>
-          <a class='btn btn-mini' href="<?= $this->url('topic', array('action' => 'delete', 'id' => $topic->getId())); ?>">Delete this Topic</a></li>
+          <a class='btn btn-mini' href="<?= $this->url('topic', array('action' => 'edit', 'id' => $topic->getId())); ?>"><?=$this->translate('Edit this Topic')?></a>
+          <a class='btn btn-mini' href="<?= $this->url('topic', array('action' => 'delete', 'id' => $topic->getId())); ?>"><?=$this->translate('Delete this Topic')?></a></li>
         </td>
       </tr>
     <?php endforeach; ?>
   </tbody>  
 </table>
-<a class='btn btn-primary' href="<?= $this->url('topic', array('action' => 'add')); ?>">Add new Topic</a>
+<a class='btn btn-primary' href="<?= $this->url('topic', array('action' => 'add')); ?>"><?=$this->translate('Add new Topic')?></a>

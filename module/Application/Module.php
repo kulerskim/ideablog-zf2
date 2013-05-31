@@ -14,7 +14,7 @@ use Zend\Mvc\MvcEvent;
 
 class Module
 {
-    public function getConfig()
+  public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
     }
@@ -36,8 +36,9 @@ class Module
       if (isset($session->lang)) {
         $translator->setLocale($session->lang);
       }
-
+      
       $viewModel           = $e->getApplication()->getMvcEvent()->getViewModel();
       $viewModel->lang     = $translator->getLocale();
+      $viewModel->direction = in_array($translator->getLocale(), array('he_HE')) ? "rtl" : "ltr";
     }
 }

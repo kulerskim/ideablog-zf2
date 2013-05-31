@@ -11,7 +11,9 @@ $this->contentEditor();
 </p>
 <?php foreach ($replies as $reply) : ?>
 <article class='reply'>
-  <small class='created-info muted text-right'>Created by <?php echo $reply->getCreatedBy()->getName(); ?> on <?php echo $this->dateFormat($reply->getCreatedAt()); ?></small>
+  <small class='created-info muted text-right'>
+    <?=sprintf($this->translate('Created by %s on %s'), $reply->getCreatedBy()->getName(),$this->dateFormat($reply->getCreatedAt()))?>
+  </small>
   <p>
     <?php echo $reply->getContent();?>
   </p>

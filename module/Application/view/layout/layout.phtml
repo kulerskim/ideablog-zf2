@@ -1,6 +1,6 @@
 <?php echo $this->doctype(); ?>
 
-<html lang="en">
+<html lang="en" dir='<?=$this->direction?>'>
   <head>
     <meta charset="utf-8">
     <?php echo $this->headTitle('ZF2 ' . $this->translate('Ideablog spike'))->setSeparator(' - ')->setAutoEscape(false) ?>
@@ -9,10 +9,15 @@
 
     <!-- Le styles -->
     <?php
+    if($this->direction == "rtl"){
+      $this->headLink()->appendStylesheet($this->basePath() . '/css/style-rtl.css');
+    }
     echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
       ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
       ->prependStylesheet($this->basePath() . '/css/style.css')
-      ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+      ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css');
+    
+    
     ?>
 
     <!-- Scripts -->
@@ -38,8 +43,7 @@
               <li class="active"><a href="<?php echo $this->url('topic') ?>"><?php echo $this->translate('Topics') ?></a></li>
             </ul>
           </div><!--/.nav-collapse -->
-        </div>
-        <div class="dropdown" style="float:right">
+          <div class="dropdown" style="float:right">
           <? echo $this->partial('layout/languages.phtml', array(
             'lang' => array(
               'English'  => 'en_US',
@@ -48,6 +52,7 @@
             'selected' => $this->lang
           )); ?>
         </div>
+        </div>        
       </div>
     </div>
     <div class="container">
